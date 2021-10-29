@@ -92,9 +92,9 @@ namespace Aplikacja_dla_lekarza
                     imie[firstEl] = "";
                     badanie[firstEl] = "";
                     data[firstEl] = "";
-                    firstEl++;
+                firstEl++;
                     lastEl--;
-                }
+            }
                 else
                 {
                     imie[firstEl] = "";
@@ -233,7 +233,7 @@ namespace Aplikacja_dla_lekarza
             }
 
         }
-        Kolejka kolejka = new Kolejka(100);
+        Kolejka kolejka = new Kolejka(100);    
         private void dataTimer_Tick(object sender, EventArgs e)
         { 
             dataLabel.Text = DateTime.Now.ToString("dd.MM.yyyy");
@@ -248,12 +248,16 @@ namespace Aplikacja_dla_lekarza
         {
             kolejka.RemoveFromQ();
             Czytanie();
+            CzytaniePrev();
+            CzytanieNext();
         }
 
         private void dodajButton_Click(object sender, EventArgs e)
         {
             kolejka.SaveToQ(imieTextBox.Text,badanieTextBox.Text,dataBadaniaDateTime.Value.ToString("dd.MM.yyyy"));
             Czytanie();
+            CzytaniePrev();
+            CzytanieNext();
             kolejka.ToFile();
 
         }
@@ -313,7 +317,7 @@ namespace Aplikacja_dla_lekarza
         private void prevButton_Click(object sender, EventArgs e)
         {
             if (kolejka.GetWhichEl() - 1 >= 0)
-            {
+        {
                 kolejka.WhichElMinus();
                 Czytanie();
             }
@@ -323,7 +327,7 @@ namespace Aplikacja_dla_lekarza
         private void nextButton_Click(object sender, EventArgs e)
         {
             if (kolejka.GetWhichEl() + 1 < kolejka.GetLastEl())
-            {
+        {
                 kolejka.WhichElPlus();
                 Czytanie();
             }
