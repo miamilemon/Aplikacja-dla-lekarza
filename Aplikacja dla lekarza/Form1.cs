@@ -248,16 +248,12 @@ namespace Aplikacja_dla_lekarza
         {
             kolejka.RemoveFromQ();
             Czytanie();
-            CzytaniePrev();
-            CzytanieNext();
         }
 
         private void dodajButton_Click(object sender, EventArgs e)
         {
             kolejka.SaveToQ(imieTextBox.Text,badanieTextBox.Text,dataBadaniaDateTime.Value.ToString("dd.MM.yyyy"));
             Czytanie();
-            CzytaniePrev();
-            CzytanieNext();
             kolejka.ToFile();
 
         }
